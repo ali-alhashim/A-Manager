@@ -1,0 +1,154 @@
+﻿@model A_Manager.Models.Car
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id" />
+            <div class="form-group">
+                <label asp-for="serial_number" class="control-label"></label>
+                <input asp-for="serial_number" class="form-control" />
+                <span asp-validation-for="serial_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vehicle_identification_number" class="control-label"></label>
+                <input asp-for="vehicle_identification_number" class="form-control" />
+                <span asp-validation-for="vehicle_identification_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="plate_number" class="control-label"></label>
+                <input asp-for="plate_number" class="form-control" />
+                <span asp-validation-for="plate_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="door_number" class="control-label"></label>
+                <input asp-for="door_number" class="form-control" />
+                <span asp-validation-for="door_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="color" class="control-label"></label>
+                <input asp-for="color" class="form-control" />
+                <span asp-validation-for="color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="brand" class="control-label"></label>
+                <input asp-for="brand" class="form-control" />
+                <span asp-validation-for="brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="model" class="control-label"></label>
+                <input asp-for="model" class="form-control" />
+                <span asp-validation-for="model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="year_of_make" class="control-label"></label>
+                <input asp-for="year_of_make" class="form-control" />
+                <span asp-validation-for="year_of_make" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="seats_number" class="control-label"></label>
+                <input asp-for="seats_number" class="form-control" />
+                <span asp-validation-for="seats_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fuel_type" class="control-label"></label>
+                <input asp-for="fuel_type" class="form-control" />
+                <span asp-validation-for="fuel_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="body_type" class="control-label"></label>
+                <input asp-for="body_type" class="form-control" />
+                <span asp-validation-for="body_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="front_photo" class="control-label"></label>
+                <input asp-for="front_photo" class="form-control" />
+                <span asp-validation-for="front_photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="back_photo" class="control-label"></label>
+                <input asp-for="back_photo" class="form-control" />
+                <span asp-validation-for="back_photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="right_photo" class="control-label"></label>
+                <input asp-for="right_photo" class="form-control" />
+                <span asp-validation-for="right_photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="left_photo" class="control-label"></label>
+                <input asp-for="left_photo" class="form-control" />
+                <span asp-validation-for="left_photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="purchase_price" class="control-label"></label>
+                <input asp-for="purchase_price" class="form-control" />
+                <span asp-validation-for="purchase_price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="inspection_expiration" class="control-label"></label>
+                <input asp-for="inspection_expiration" class="form-control" />
+                <span asp-validation-for="inspection_expiration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="hajri_inspection_expiration" class="control-label"></label>
+                <input asp-for="hajri_inspection_expiration" class="form-control" />
+                <span asp-validation-for="hajri_inspection_expiration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="registration_license_expiration" class="control-label"></label>
+                <input asp-for="registration_license_expiration" class="form-control" />
+                <span asp-validation-for="registration_license_expiration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="hajri_registration_license_expiration" class="control-label"></label>
+                <input asp-for="hajri_registration_license_expiration" class="form-control" />
+                <span asp-validation-for="hajri_registration_license_expiration" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="has_gps" /> @Html.DisplayNameFor(model => model.has_gps)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="has_fuel_chip" /> @Html.DisplayNameFor(model => model.has_fuel_chip)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="owner_name" class="control-label"></label>
+                <input asp-for="owner_name" class="form-control" />
+                <span asp-validation-for="owner_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="owner_id" class="control-label"></label>
+                <input asp-for="owner_id" class="form-control" />
+                <span asp-validation-for="owner_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

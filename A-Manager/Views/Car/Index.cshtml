@@ -1,0 +1,91 @@
+﻿@model IEnumerable<A_Manager.Models.Car>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus"></i>  Add New</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.serial_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vehicle_identification_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plate_number)
+            </th>
+           
+            
+            <th>
+                @Html.DisplayNameFor(model => model.color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.year_of_make)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.serial_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vehicle_identification_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.plate_number)
+                    </td>
+                   
+                    
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.year_of_make)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                   
+                   
+                   
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                    </td>
+                </tr>
+            }
+        
+        }
+    </tbody>
+</table>
