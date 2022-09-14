@@ -2,6 +2,7 @@
 using A_Manager.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 
 namespace A_Manager.Controllers
@@ -9,6 +10,7 @@ namespace A_Manager.Controllers
     public class CarController : Controller
     {
         private readonly DatabaseConnectionClass _context;
+
 
         public CarController(DatabaseConnectionClass context)
         {
@@ -20,35 +22,49 @@ namespace A_Manager.Controllers
         // GET: CarController
         public ActionResult Index()
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var cars = _context.Cars;
+
+            return View(cars);
         }
 
         // GET: CarController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Car car = new Car();
+
+            car = _context.Cars.Find(id);
+
+            return View(car);
         }
 
         // GET: CarController/Create
         public ActionResult Create()
         {
-            return View();
+            Car car = new Car();
+
+            // default Data for car
+            car.status = "Working";
+            car.seats_number = 5;
+
+
+            return View(car);
         }
 
         // POST: CarController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Car car)
         {
             try
             {
-                Car theNewCar = new Car();
 
-                theNewCar.serial_number = collection["serial_number"];
-                theNewCar.brand = collection["brand"];
-               //theNewCar.purchase_price = collection["purchase_price"];
 
-                _context.Cars.Add(theNewCar);
+                _context.Cars.Add(car);
 
                 _context.SaveChanges();
 
@@ -63,16 +79,22 @@ namespace A_Manager.Controllers
         // GET: CarController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Car car = new Car();
+
+            car = _context.Cars.Find(id);
+            return View(car);
         }
 
         // POST: CarController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Car car)
         {
             try
             {
+                _context.Cars.Update(car);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -84,16 +106,25 @@ namespace A_Manager.Controllers
         // GET: CarController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Car car = new Car();
+
+            car = _context.Cars.Find(id);
+
+            return View(car);
         }
 
         // POST: CarController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(Car car)
         {
             try
             {
+
+
+                _context.Cars.Remove(car);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -6,162 +6,169 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Car</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.serial_number)
-        </dt>
-        <dd class = "col-sm-10">
+
+<h4>Car</h4>
+<hr />
+<table class=" ali-table">
+    <thead>
+    <tr>
+        <td>System ID</td>
+        <td>Serial Number</td>
+        <td>VIN</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Year</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+         <td>
+            @Html.DisplayFor(model => model.id)
+        </td>
+
+          <td>
             @Html.DisplayFor(model => model.serial_number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.vehicle_identification_number)
-        </dt>
-        <dd class = "col-sm-10">
+        </td>
+
+        <td>
             @Html.DisplayFor(model => model.vehicle_identification_number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.plate_number)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.plate_number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.door_number)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.door_number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.status)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.color)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.color)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.brand)
-        </dt>
-        <dd class = "col-sm-10">
+        </td>
+
+        <td>
             @Html.DisplayFor(model => model.brand)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.model)
-        </dt>
-        <dd class = "col-sm-10">
+        </td>
+
+        <td>
             @Html.DisplayFor(model => model.model)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.year_of_make)
-        </dt>
-        <dd class = "col-sm-10">
+        </td>
+
+        <td>
             @Html.DisplayFor(model => model.year_of_make)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.seats_number)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.seats_number)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.fuel_type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.fuel_type)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.body_type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.body_type)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.front_photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.front_photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.back_photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.back_photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.right_photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.right_photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.left_photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.left_photo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.purchase_price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.purchase_price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.inspection_expiration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.inspection_expiration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.hajri_inspection_expiration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.hajri_inspection_expiration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.registration_license_expiration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.registration_license_expiration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.hajri_registration_license_expiration)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.hajri_registration_license_expiration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.has_gps)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.has_gps)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.has_fuel_chip)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.has_fuel_chip)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.owner_name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.owner_name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.owner_id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.owner_id)
-        </dd>
-    </dl>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="CarInfo-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><img src="~/assets/icons/icons8_sedan_30px.png" /> Car info</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarDrivers-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><img src='~/assets/icons/icons8_driver_30px.png' /> Car Drivers </button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarInsurance-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false"><img src='~/assets/icons/icons8_favorites_shield_30px.png' /> Car insurance</button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarServices-tab" data-bs-toggle="tab" data-bs-target="#carServicesID" type="button" role="tab" aria-controls="contact" aria-selected="false"><img src='~/assets/icons/icons8_Tools_30px.png' /> Car Services</button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarOdometer-tab" data-bs-toggle="tab" data-bs-target="#carOdometerID" type="button" role="tab" aria-controls="contact" aria-selected="false"><img src='~/assets/icons/icons8_speed_30px.png' /> Car Odometer</button>
+    </li>
+
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarSell-tab" data-bs-toggle="tab" data-bs-target="#carSellsID" type="button" role="tab" aria-controls="contact" aria-selected="false"><img src='~/assets/icons/icons8_get_cash_30px.png' /> Sell This Car</button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="CarAccident-tab" data-bs-toggle="tab" data-bs-target="#CarAccidentID" type="button" role="tab" aria-controls="contact" aria-selected="false"><img src='~/assets/icons/icons8_car_crash_30px.png' /> Accident</button>
+    </li>
+
+</ul>
+
+<div class="tab-content rounded bg-white p-2" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="CarInfo-tab">
+        <!----------------------------------------------------------------Car info tab content---------------------------------------------------------------------------->
+        <table class="table table-responsive table-bordered bg-white ">
+
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.plate_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.plate_number)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.door_number)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.door_number)
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.status)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.status)
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.color)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.color)
+                </td>
+            </tr>
+
+
+
+
+
+            <tr>
+                <td class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.seats_number)
+                </td>
+                <td class="col-sm-10">
+                    @Html.DisplayFor(model => model.seats_number)
+                </td>
+            </tr>
+
+
+
+        </table>
+        <!----------------------------------------------------------------end Car info tab content ----------------------------------------------------------------------->
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="CarDrivers-tab">Car Drivers Tab Content</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="CarInsurance-tab"> Car insurance Tab Content</div>
+    <div class="tab-pane fade"id="carServicesID" role="tabpanel" aria-labelledby="CarServices-tab"> Car Services Tab Content</div>
+
+    <div class="tab-pane fade" id="carOdometerID" role="tabpanel" aria-labelledby="CarServices-tab"> Car Odometer Tab Content</div>
+
+    <div class="tab-pane fade" id="carSellsID" role="tabpanel" aria-labelledby="CarServices-tab"> Car Sell Tab Content</div>
+
+    <div class="tab-pane fade" id="CarAccidentID" role="tabpanel" aria-labelledby="CarAccident-tab"> Car Accident Tab Content</div>
 </div>
+
+<br/>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a asp-action="Index">Back to List</a>

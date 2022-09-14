@@ -14,6 +14,7 @@ namespace A_Manager.Models
         [Display(Name = "VIN")]
         public string vehicle_identification_number { get; set; }
 
+        [Display(Name = "Plate Number")]
         public string plate_number { get; set; }
 
         [DisplayFormat(ConvertEmptyStringToNull = false)]
@@ -28,8 +29,11 @@ namespace A_Manager.Models
 
         public string model { get; set; }
 
+
+        [Display(Name = "Year")]
         public int year_of_make { get; set; }
 
+        [Display(Name = "Seats Number")]
         public int seats_number { get; set; }
 
         public string fuel_type { get; set; } 
