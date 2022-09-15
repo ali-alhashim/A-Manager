@@ -78,9 +78,9 @@ namespace A_Manager.Models
         public DateTime? hajri_registration_license_expiration { get; set; }
 
 
-        public Boolean? has_gps { get; set; } 
+        public Boolean has_gps { get; set; } 
 
-        public Boolean? has_fuel_chip { get; set; }
+        public Boolean  has_fuel_chip { get; set; }
 
        
         public string? owner_name { get; set; }

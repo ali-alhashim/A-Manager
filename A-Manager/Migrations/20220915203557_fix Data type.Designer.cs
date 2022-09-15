@@ -4,6 +4,7 @@ using A_Manager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A_Manager.Migrations
 {
     [DbContext(typeof(DatabaseConnectionClass))]
-    partial class DatabaseConnectionClassModelSnapshot : ModelSnapshot
+    [Migration("20220915203557_fix Data type")]
+    partial class fixDatatype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -283,27 +285,33 @@ namespace A_Manager.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("job_title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("join_date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("local_full_name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mobile")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nationality")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("profile_photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("telphone")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
