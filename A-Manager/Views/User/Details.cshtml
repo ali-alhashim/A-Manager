@@ -1,0 +1,120 @@
+﻿@model A_Manager.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.full_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.full_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.local_full_name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.local_full_name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.telphone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.telphone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.badge_number)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.badge_number)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.job_title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.job_title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.join_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.join_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nationality)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nationality)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gov_id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gov_id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.brith_date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.brith_date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.profile_photo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.profile_photo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.is_active)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.is_active)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.is_employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.is_employee)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.is_superuser)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.is_superuser)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

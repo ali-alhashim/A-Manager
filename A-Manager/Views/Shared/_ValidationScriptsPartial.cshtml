@@ -1,2 +1,52 @@
-﻿<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+﻿
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<!--Hijri css-->
+<script src="~/assets/js/bootstrap-hijri-datetimepicker.min.js"></script>
+
+<!----------Hijiri Script-------->
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+        console.log("ready!");
+        $(function () {
+
+            initDefault();
+            initDefault2();
+        });
+
+        function initDefault() {
+            $("#hajri_inspection_expirationID").hijriDatePicker({
+                hijri: true,
+                showSwitcher: false
+            });
+
+            $("#hajri_inspection_expirationID").hijriDatePicker({
+                hijri: true,
+                showSwitcher: false
+            })
+        }
+
+        
+        function initDefault2() {
+            $("#hajri_registration_license_expiration").hijriDatePicker({
+                hijri: true,
+                showSwitcher: false
+            });
+
+            $("#hajri_registration_license_expiration").hijriDatePicker({
+                hijri: true,
+                showSwitcher: false
+            })
+        }
+
+    });
+
+
+</script>
+<!-------------------------------->
+
+

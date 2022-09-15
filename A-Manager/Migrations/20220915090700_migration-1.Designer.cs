@@ -4,6 +4,7 @@ using A_Manager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A_Manager.Migrations
 {
     [DbContext(typeof(DatabaseConnectionClass))]
-    partial class DatabaseConnectionClassModelSnapshot : ModelSnapshot
+    [Migration("20220915090700_migration-1")]
+    partial class migration1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,9 +33,11 @@ namespace A_Manager.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<string>("back_photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("body_type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("brand")
@@ -41,33 +45,38 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("color")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("door_number")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("front_photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("fuel_type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("hajri_inspection_expiration")
+                    b.Property<DateTime>("hajri_inspection_expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("hajri_registration_license_expiration")
+                    b.Property<DateTime>("hajri_registration_license_expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("has_fuel_chip")
+                    b.Property<bool>("has_fuel_chip")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("has_gps")
+                    b.Property<bool>("has_gps")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime?>("inspection_expiration")
+                    b.Property<DateTime>("inspection_expiration")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("left_photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("model")
@@ -75,25 +84,28 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("owner_id")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("owner_name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("plate_number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("purchase_price")
+                    b.Property<double>("purchase_price")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("registration_license_expiration")
+                    b.Property<DateTime>("registration_license_expiration")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("right_photo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("seats_number")
+                    b.Property<int>("seats_number")
                         .HasColumnType("int");
 
                     b.Property<string>("serial_number")
@@ -101,13 +113,14 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("status")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("vehicle_identification_number")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("year_of_make")
+                    b.Property<int>("year_of_make")
                         .HasColumnType("int");
 
                     b.HasKey("id");

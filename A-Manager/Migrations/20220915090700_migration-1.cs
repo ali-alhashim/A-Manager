@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace A_Manager.Migrations
 {
-    public partial class initial : Migration
+    public partial class migration1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,25 +44,6 @@ namespace A_Manager.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cars", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Cars_Services",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    created_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    last_update = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    odometer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    service_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    workshop = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    service_cost = table.Column<double>(type: "float", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cars_Services", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,6 +98,30 @@ namespace A_Manager.Migrations
                     table.PrimaryKey("PK_Cars_Insurances", x => x.id);
                     table.ForeignKey(
                         name: "FK_Cars_Insurances_Cars_id",
+                        column: x => x.id,
+                        principalTable: "Cars",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cars_Services",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false),
+                    created_date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    last_update = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    odometer = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    service_date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    workshop = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    service_cost = table.Column<double>(type: "float", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cars_Services", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Cars_Services_Cars_id",
                         column: x => x.id,
                         principalTable: "Cars",
                         principalColumn: "id",

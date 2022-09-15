@@ -4,6 +4,7 @@ using A_Manager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A_Manager.Migrations
 {
     [DbContext(typeof(DatabaseConnectionClass))]
-    partial class DatabaseConnectionClassModelSnapshot : ModelSnapshot
+    [Migration("20220915120932_nullable-1")]
+    partial class nullable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,10 +60,10 @@ namespace A_Manager.Migrations
                     b.Property<DateTime?>("hajri_registration_license_expiration")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool?>("has_fuel_chip")
+                    b.Property<bool>("has_fuel_chip")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("has_gps")
+                    b.Property<bool>("has_gps")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("inspection_expiration")
@@ -84,7 +86,7 @@ namespace A_Manager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double?>("purchase_price")
+                    b.Property<double>("purchase_price")
                         .HasColumnType("float");
 
                     b.Property<DateTime?>("registration_license_expiration")
@@ -93,7 +95,7 @@ namespace A_Manager.Migrations
                     b.Property<string>("right_photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("seats_number")
+                    b.Property<int>("seats_number")
                         .HasColumnType("int");
 
                     b.Property<string>("serial_number")
@@ -107,7 +109,7 @@ namespace A_Manager.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("year_of_make")
+                    b.Property<int>("year_of_make")
                         .HasColumnType("int");
 
                     b.HasKey("id");

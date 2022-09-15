@@ -21,6 +21,13 @@
     <!-- Template Main CSS File -->
     <link href="~/assets/css/style.css" rel="stylesheet">
 
+    <!--Hijri css-->
+    <link href="~/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+
+    <!-----DataTable----------->
+    <link rel="stylesheet" type="text/css" href="~/lib/DataTables/datatables.min.css">
+
 
 </head>
 <body>
@@ -262,16 +269,16 @@
 
             <li class="nav-item">
                 <a class="nav-link " asp-action="index" asp-controller="Home">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
+                    <img src="~/assets/icons/icons8_home_30px.png" />
+                    <span class="m-1"> Dashboard</span>
                 </a>
             </li>
             <!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link " asp-action="index" asp-controller="Home">
-                    <i class="bi bi-person"></i>
-                    <span>Users</span>
+                <a class="nav-link " asp-action="index" asp-controller="User">
+                    <img src="~/assets/icons/icons8_more_info_30px.png" />
+                    <span class="m-1"> Users</span>
                 </a>
             </li>
 
@@ -279,8 +286,17 @@
             <!--side tap-->
             <li class="nav-item">
                 <a class="nav-link " asp-action="index" asp-controller="Car">
-                    <i class="bi bi-car-front-fill"></i>
-                    <span>Cars</span>
+                    <img src="~/assets/icons/icons8_traffic_jam_30px.png" />
+                    <span class="m-1"> Cars</span>
+                </a>
+            </li>
+
+            <!--end tap-->
+            <!--side tap-->
+            <li class="nav-item">
+                <a class="nav-link " asp-action="index" asp-controller="Recruitment">
+                    <img src="~/assets/icons/icons8_applicant_30px.png" />
+                    <span class="m-1"> Recruitment</span>
                 </a>
             </li>
 
@@ -322,9 +338,20 @@
     <script src="~/assets/vendor/simple-datatables/simple-datatables.js"></script>
     <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
     <script src="~/assets/vendor/php-email-form/validate.js"></script>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <!-- Template Main JS File -->
     <script src="~/assets/js/main.js"></script>
+
+
+    <!---Data Table ------>
+    <script type="text/javascript" charset="utf8" src="~/lib/DataTables/datatables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#MyDataTableID').DataTable();
+        });
+    </script>
+   
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

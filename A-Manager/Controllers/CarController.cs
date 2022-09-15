@@ -70,8 +70,9 @@ namespace A_Manager.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }

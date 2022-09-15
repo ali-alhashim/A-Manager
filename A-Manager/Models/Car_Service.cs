@@ -1,8 +1,15 @@
-﻿namespace A_Manager.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace A_Manager.Models
 {
     public class Car_Service
     {
+        [Key]
         public int id { get; set; }
+
+        [ForeignKey("id")]
+        public virtual Car car { get; set; }
 
         public DateTime created_date { get; set; }
 

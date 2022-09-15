@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace A_Manager.Migrations
 {
     [DbContext(typeof(DatabaseConnectionClass))]
-    [Migration("20220912111918_initial")]
-    partial class initial
+    [Migration("20220915120014_nullable")]
+    partial class nullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,6 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("body_type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("brand")
@@ -57,13 +56,14 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("fuel_type")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("hajri_inspection_expiration")
+                    b.Property<DateTime?>("hajri_inspection_expiration")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("hajri_registration_license_expiration")
+                    b.Property<DateTime?>("hajri_registration_license_expiration")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("has_fuel_chip")
@@ -72,7 +72,8 @@ namespace A_Manager.Migrations
                     b.Property<bool>("has_gps")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("inspection_expiration")
+                    b.Property<DateTime?>("inspection_expiration")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("left_photo")
@@ -98,7 +99,8 @@ namespace A_Manager.Migrations
                     b.Property<double>("purchase_price")
                         .HasColumnType("float");
 
-                    b.Property<DateTime>("registration_license_expiration")
+                    b.Property<DateTime?>("registration_license_expiration")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<string>("right_photo")
@@ -181,10 +183,7 @@ namespace A_Manager.Migrations
             modelBuilder.Entity("A_Manager.Models.Car_Service", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<DateTime>("created_date")
                         .HasColumnType("datetime2");
@@ -345,6 +344,17 @@ namespace A_Manager.Migrations
                 });
 
             modelBuilder.Entity("A_Manager.Models.Car_Insurance", b =>
+                {
+                    b.HasOne("A_Manager.Models.Car", "car")
+                        .WithMany()
+                        .HasForeignKey("id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("car");
+                });
+
+            modelBuilder.Entity("A_Manager.Models.Car_Service", b =>
                 {
                     b.HasOne("A_Manager.Models.Car", "car")
                         .WithMany()
