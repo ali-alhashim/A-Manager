@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using A_Manager.Data;
 using A_Manager.Models;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace A_Manager.Controllers
 {
     public class UserController : Controller
     {
         private readonly DatabaseConnectionClass _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public UserController(DatabaseConnectionClass context)
+        public UserController(DatabaseConnectionClass context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: User
@@ -56,10 +60,38 @@ namespace A_Manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,profile_photo,is_active,is_employee,is_superuser")] User user)
+        public async Task<IActionResult> Create([Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,profile_photo,profile_photo_url,is_active,is_employee,is_superuser")] User user)
         {
             if (ModelState.IsValid)
             {
+                if(user.profile_photo!=null)
+                {
+                    //Save image to wwwroot/upload/<user email>/image.jpg
+
+                    
+
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(user.profile_photo.FileName);
+                    string extension = Path.GetExtension(user.profile_photo.FileName);
+
+                    user.profile_photo_url = fileName+DateTime.Now.ToString("yymmssfff") + extension;
+
+                    string path = Path.Combine(wwwRootPath + "/upload/"+user.email+"/", user.profile_photo_url);
+
+                    bool exists = System.IO.Directory.Exists(wwwRootPath + "/upload/" + user.email + "/");
+                    if (!exists)
+                    {
+                        System.IO.Directory.CreateDirectory(wwwRootPath + "/upload/" + user.email + "/");
+                    }
+
+                    using (var fileStream = new FileStream(path, FileMode.Create))
+                    {
+                        await user.profile_photo.CopyToAsync(fileStream);
+                    }
+                }
+               
+
+
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -88,7 +120,7 @@ namespace A_Manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,profile_photo,is_active,is_employee,is_superuser")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,profile_photo,profile_photo_url,is_active,is_employee,is_superuser")] User user)
         {
             if (id != user.id)
             {
@@ -99,6 +131,27 @@ namespace A_Manager.Controllers
             {
                 try
                 {
+
+                    if (user.profile_photo != null)
+                    {
+                        //Save image to wwwroot/upload/<user_id>/image.jpg
+                        string wwwRootPath = _hostEnvironment.WebRootPath;
+                        string fileName = Path.GetFileNameWithoutExtension(user.profile_photo.FileName);
+                        string extension = Path.GetExtension(user.profile_photo.FileName);
+
+                        user.profile_photo_url = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+
+                        string path = Path.Combine(wwwRootPath + "/upload/" + user.email + "/", user.profile_photo_url);
+
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await user.profile_photo.CopyToAsync(fileStream);
+                        }
+                    }
+
+
+
+
                     _context.Update(user);
                     await _context.SaveChangesAsync();
                 }

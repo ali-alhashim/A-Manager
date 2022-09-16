@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus"></i>  Add New</a>
 </p>
 <table  id="MyDataTableID">
     <thead>
@@ -68,7 +68,7 @@
            
             <td>
 
-                    <img src="@item.profile_photo" style="max-width:120px; max-height:140px; background-color:#dddddd;" alt="No Image" />
+                    <img src="@("upload/"+item.email+"/"+item.profile_photo_url)" style="max-width:120px; max-height:140px; background-color:#dddddd;" alt="No Image" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.is_active)

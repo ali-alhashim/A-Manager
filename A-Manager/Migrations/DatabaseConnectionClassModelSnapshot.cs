@@ -300,8 +300,8 @@ namespace A_Manager.Migrations
                     b.Property<string>("password")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("profile_photo")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("profile_photo_url")
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("telphone")
                         .HasColumnType("nvarchar(max)");

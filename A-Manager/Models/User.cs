@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace A_Manager.Models
 {
@@ -48,8 +50,14 @@ namespace A_Manager.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime? brith_date { get; set; }
 
-      
-        public string? profile_photo { get; set; }
+
+        [NotMapped]
+        [DisplayName("Profile Photo")]
+        public IFormFile? profile_photo { get; set; }
+
+        [Column(TypeName = "nvarchar(max)")]
+        [DisplayName("Image url")]
+        public string? profile_photo_url { get; set; }
 
         public Boolean is_active { get; set; }
 
