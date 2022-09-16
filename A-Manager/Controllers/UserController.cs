@@ -120,7 +120,7 @@ namespace A_Manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,profile_photo,profile_photo_url,is_active,is_employee,is_superuser")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,is_active,is_employee,is_superuser")] User user)
         {
             if (id != user.id)
             {
@@ -131,10 +131,10 @@ namespace A_Manager.Controllers
             {
                 try
                 {
-
+                    //check first in the user select image or he did not  
                     if (user.profile_photo != null)
                     {
-                        //Save image to wwwroot/upload/<user_id>/image.jpg
+                        //Save image to wwwroot/upload/<user email>/image.jpg
                         string wwwRootPath = _hostEnvironment.WebRootPath;
                         string fileName = Path.GetFileNameWithoutExtension(user.profile_photo.FileName);
                         string extension = Path.GetExtension(user.profile_photo.FileName);
