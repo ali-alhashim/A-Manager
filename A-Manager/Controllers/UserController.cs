@@ -9,6 +9,7 @@ using A_Manager.Data;
 using A_Manager.Models;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
 
 namespace A_Manager.Controllers
 {
@@ -76,12 +77,12 @@ namespace A_Manager.Controllers
 
                     user.profile_photo_url = fileName+DateTime.Now.ToString("yymmssfff") + extension;
 
-                    string path = Path.Combine(wwwRootPath + "/upload/"+user.email+"/", user.profile_photo_url);
+                    string path = Path.Combine(wwwRootPath + "/upload/users/"+user.email+"/", user.profile_photo_url);
 
-                    bool exists = System.IO.Directory.Exists(wwwRootPath + "/upload/" + user.email + "/");
+                    bool exists = System.IO.Directory.Exists(wwwRootPath + "/upload/users/" + user.email + "/");
                     if (!exists)
                     {
-                        System.IO.Directory.CreateDirectory(wwwRootPath + "/upload/" + user.email + "/");
+                        System.IO.Directory.CreateDirectory(wwwRootPath + "/upload/users/" + user.email + "/");
                     }
 
                     using (var fileStream = new FileStream(path, FileMode.Create))
@@ -120,8 +121,10 @@ namespace A_Manager.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,nationality,gov_id,brith_date,is_active,is_employee,is_superuser")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("id,email,password,full_name,local_full_name,gender,mobile,telphone,badge_number,job_title,join_date,profile_photo,nationality,gov_id,brith_date,is_active,is_employee,is_superuser")] User user)
         {
+            Debug.WriteLine("You POST DATA to Edit Method------------------------------------------------------------------------------------");
+
             if (id != user.id)
             {
                 return NotFound();
@@ -132,23 +135,33 @@ namespace A_Manager.Controllers
                 try
                 {
                     //check first in the user select image or he did not  
-                    if (user.profile_photo != null)
+                    if (user.profile_photo != null && user.profile_photo.FileName !="")
                     {
                         //Save image to wwwroot/upload/<user email>/image.jpg
+                        Debug.WriteLine("profile_photo not null");
+                        Debug.WriteLine("profile_photo ==" + user.profile_photo.FileName);
+
+
                         string wwwRootPath = _hostEnvironment.WebRootPath;
                         string fileName = Path.GetFileNameWithoutExtension(user.profile_photo.FileName);
                         string extension = Path.GetExtension(user.profile_photo.FileName);
 
                         user.profile_photo_url = fileName + DateTime.Now.ToString("yymmssfff") + extension;
 
-                        string path = Path.Combine(wwwRootPath + "/upload/" + user.email + "/", user.profile_photo_url);
+                        string path = Path.Combine(wwwRootPath + "/upload/users/" + user.email + "/", user.profile_photo_url);
+
+                        bool exists = System.IO.Directory.Exists(wwwRootPath + "/upload/users/" + user.email + "/");
+                        if (!exists)
+                        {
+                            System.IO.Directory.CreateDirectory(wwwRootPath + "/upload/users/" + user.email + "/");
+                        }
 
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
                             await user.profile_photo.CopyToAsync(fileStream);
                         }
                     }
-
+                    
 
 
 
