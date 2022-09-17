@@ -1,4 +1,4 @@
-﻿@model A_Manager.Models.Car
+﻿@model Tuple<A_Manager.Models.Car, A_Manager.Models.Car_Users>
 
 @{
     ViewData["Title"] = "Details";
@@ -23,27 +23,27 @@
     <tbody>
     <tr>
          <td>
-            @Html.DisplayFor(model => model.id)
+            @Html.DisplayFor(model => model.Item1.serial_number)
         </td>
 
           <td>
-            @Html.DisplayFor(model => model.serial_number)
+                @Html.DisplayFor(model => model.Item1.serial_number)
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.vehicle_identification_number)
+                @Html.DisplayFor(model => model.Item1.vehicle_identification_number)
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.brand)
+                @Html.DisplayFor(model => model.Item1.brand)
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.model)
+                @Html.DisplayFor(model => model.Item1.model)
         </td>
 
         <td>
-            @Html.DisplayFor(model => model.year_of_make)
+                @Html.DisplayFor(model => model.Item1.year_of_make)
         </td>
 
 
@@ -92,38 +92,38 @@
 
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.plate_number)
+                    @Html.DisplayNameFor(model => model.Item1.plate_number)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.plate_number)
+                    @Html.DisplayFor(model => model.Item1.plate_number)
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.door_number)
+                    @Html.DisplayNameFor(model => model.Item1.door_number)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.door_number)
+                    @Html.DisplayFor(model => model.Item1.door_number)
                 </td>
             </tr>
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.status)
+                    @Html.DisplayNameFor(model => model.Item1.status)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.status)
+                    @Html.DisplayFor(model => model.Item1.status)
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.color)
+                    @Html.DisplayNameFor(model => model.Item1.color)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.color)
+                    @Html.DisplayFor(model => model.Item1.color)
                 </td>
             </tr>
 
@@ -133,10 +133,10 @@
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.seats_number)
+                    @Html.DisplayNameFor(model => model.Item1.seats_number)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.seats_number)
+                    @Html.DisplayFor(model => model.Item1.seats_number)
                 </td>
             </tr>
 
@@ -156,7 +156,12 @@
 
 
 
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="CarDrivers-tab">Car Drivers Tab Content</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="CarDrivers-tab">
+        <!-------------Car Driver Content --------------------------------------------------------------------->
+        Car Drivers Tab Content
+       
+        <!------------Car Driver Content end-------------------------------------------------------------------->
+        </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="CarInsurance-tab"> Car insurance Tab Content</div>
     <div class="tab-pane fade"id="carServicesID" role="tabpanel" aria-labelledby="CarServices-tab"> Car Services Tab Content</div>
 
@@ -170,6 +175,6 @@
 <br/>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?Item1.id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

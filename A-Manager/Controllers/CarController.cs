@@ -35,11 +35,18 @@ namespace A_Manager.Controllers
         // GET: CarController/Details/5
         public ActionResult Details(int id)
         {
-            Car car = new Car();
+            Car? car = new();
+            Car_Users? car_Users = new();
 
+            
             car = _context.Cars.Find(id);
 
-            return View(car);
+
+            //car_Users = _context.Cars_Users.Where(x => x.car == car).ToList();
+
+            return View(Tuple.Create(car, car_Users));
+           
+           
         }
 
         // GET: CarController/Create
