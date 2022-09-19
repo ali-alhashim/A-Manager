@@ -2,6 +2,7 @@
 using A_Manager.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 
@@ -33,20 +34,24 @@ namespace A_Manager.Controllers
         }
 
         // GET: CarController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            Car? car = new();
-            Car_Users? car_Users = new();
+            if (id == null || _context.Cars == null)
+            {
+                return NotFound();
+            }
 
-            
-            car = _context.Cars.Find(id);
+            var car = await _context.Cars.Include(s => s.carUsers).FirstOrDefaultAsync(m => m.id == id);
 
 
-            //car_Users = _context.Cars_Users.Where(x => x.car == car).ToList();
 
-            return View(Tuple.Create(car, car_Users));
-           
-           
+
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            return View(car);
         }
 
         // GET: CarController/Create
@@ -87,7 +92,7 @@ namespace A_Manager.Controllers
         // GET: CarController/Edit/5
         public ActionResult Edit(int id)
         {
-            Car car = new Car();
+            Car? car = new Car();
 
             car = _context.Cars.Find(id);
             return View(car);
@@ -114,7 +119,7 @@ namespace A_Manager.Controllers
         // GET: CarController/Delete/5
         public ActionResult Delete(int id)
         {
-            Car car = new Car();
+            Car? car = new Car();
 
             car = _context.Cars.Find(id);
 

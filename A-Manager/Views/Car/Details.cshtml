@@ -1,4 +1,4 @@
-﻿@model Tuple<A_Manager.Models.Car, A_Manager.Models.Car_Users>
+﻿@model A_Manager.Models.Car
 
 @{
     ViewData["Title"] = "Details";
@@ -23,27 +23,27 @@
     <tbody>
     <tr>
          <td>
-            @Html.DisplayFor(model => model.Item1.serial_number)
+            @Html.DisplayFor(model => model.id)
         </td>
 
           <td>
-                @Html.DisplayFor(model => model.Item1.serial_number)
+                @Html.DisplayFor(model => model.serial_number)
         </td>
 
         <td>
-                @Html.DisplayFor(model => model.Item1.vehicle_identification_number)
+                @Html.DisplayFor(model => model.vehicle_identification_number)
         </td>
 
         <td>
-                @Html.DisplayFor(model => model.Item1.brand)
+                @Html.DisplayFor(model => model.brand)
         </td>
 
         <td>
-                @Html.DisplayFor(model => model.Item1.model)
+                @Html.DisplayFor(model => model.model)
         </td>
 
         <td>
-                @Html.DisplayFor(model => model.Item1.year_of_make)
+                @Html.DisplayFor(model => model.year_of_make)
         </td>
 
 
@@ -92,38 +92,38 @@
 
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.Item1.plate_number)
+                    @Html.DisplayNameFor(model => model.plate_number)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Item1.plate_number)
+                    @Html.DisplayFor(model => model.plate_number)
                 </td>
             </tr>
 
             <tr>
                 <td>
-                    @Html.DisplayNameFor(model => model.Item1.door_number)
+                    @Html.DisplayNameFor(model => model.door_number)
                 </td>
                 <td>
-                    @Html.DisplayFor(model => model.Item1.door_number)
+                    @Html.DisplayFor(model => model.door_number)
                 </td>
             </tr>
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Item1.status)
+                    @Html.DisplayNameFor(model => model.status)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.Item1.status)
+                    @Html.DisplayFor(model => model.status)
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Item1.color)
+                    @Html.DisplayNameFor(model => model.color)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.Item1.color)
+                    @Html.DisplayFor(model => model.color)
                 </td>
             </tr>
 
@@ -133,10 +133,10 @@
 
             <tr>
                 <td class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Item1.seats_number)
+                    @Html.DisplayNameFor(model => model.seats_number)
                 </td>
                 <td class="col-sm-10">
-                    @Html.DisplayFor(model => model.Item1.seats_number)
+                    @Html.DisplayFor(model => model.seats_number)
                 </td>
             </tr>
 
@@ -158,7 +158,39 @@
 
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="CarDrivers-tab">
         <!-------------Car Driver Content --------------------------------------------------------------------->
-        Car Drivers Tab Content
+        <a asp-controller="" asp-action="" class="btn btn-outline-success">Add Driver</a>
+        <hr />
+        <table class="table table-responsive table-bordered bg-white ">
+            <tr>
+                <td>
+                    #
+                </td>
+                <td>
+                    Driver Full Name
+                </td>
+
+                <td>
+                    Badge Number
+                </td>
+
+            </tr>
+            
+            @foreach (var item in Model.carUsers)
+            {
+                <tr>
+                    <td>
+                        @item.userID
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user.full_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user.badge_number)
+                    </td>
+                </tr>
+            }
+
+        </table>
        
         <!------------Car Driver Content end-------------------------------------------------------------------->
         </div>

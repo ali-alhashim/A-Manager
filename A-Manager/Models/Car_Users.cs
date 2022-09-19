@@ -9,17 +9,18 @@ namespace A_Manager.Models
         public int id { get; set; }
 
 
-        [ForeignKey("id")]
-        public virtual Car car { get; set; }
+        public int carID { get; set; }
+        public  Car car { get; set; }
 
-        [ForeignKey("id")]
-        public virtual User user { get; set; }
 
-        public DateTime created_date { get; set; }
+        public int userID { get; set; }
+        public  User user { get; set; }
 
-        public DateTime last_update { get; set; }
+        public DateTime? created_date { get; set; }
 
-        public DateTime received_date { get; set; }
+        public DateTime? last_update { get; set; }
+
+        public DateTime? received_date { get; set; }
         public string? odometer_before { get; set; }
 
         public DateTime? handover_date { get; set; }
@@ -34,6 +35,6 @@ namespace A_Manager.Models
 
         public string? note { get; set; }
 
-        public string status { get; set; }
+        public string? status { get; set; }
     }
 }

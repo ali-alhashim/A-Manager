@@ -37,7 +37,6 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("brand")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("color")
@@ -71,7 +70,6 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("owner_id")
@@ -81,7 +79,6 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("plate_number")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double?>("purchase_price")
@@ -97,14 +94,12 @@ namespace A_Manager.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("serial_number")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("status")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("vehicle_identification_number")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("year_of_make")
@@ -112,12 +107,18 @@ namespace A_Manager.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Car", (string)null);
                 });
 
             modelBuilder.Entity("A_Manager.Models.Car_Insurance", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("carID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("created_date")
@@ -162,12 +163,20 @@ namespace A_Manager.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Cars_Insurances");
+                    b.HasIndex("carID");
+
+                    b.ToTable("Car_Insurance", (string)null);
                 });
 
             modelBuilder.Entity("A_Manager.Models.Car_Service", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("carID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("created_date")
@@ -196,13 +205,18 @@ namespace A_Manager.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Cars_Services");
+                    b.HasIndex("carID");
+
+                    b.ToTable("Car_Service", (string)null);
                 });
 
             modelBuilder.Entity("A_Manager.Models.Car_Users", b =>
                 {
                     b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
                     b.Property<DateTime?>("authorize_end_date")
                         .HasColumnType("datetime2");
@@ -213,13 +227,16 @@ namespace A_Manager.Migrations
                     b.Property<string>("authorize_type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("created_date")
+                    b.Property<int>("carID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("created_date")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("handover_date")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("last_update")
+                    b.Property<DateTime?>("last_update")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("note")
@@ -234,16 +251,22 @@ namespace A_Manager.Migrations
                     b.Property<string>("odometer_unit")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("received_date")
+                    b.Property<DateTime?>("received_date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("status")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 
-                    b.ToTable("Cars_Users");
+                    b.HasIndex("carID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("Car_Users", (string)null);
                 });
 
             modelBuilder.Entity("A_Manager.Models.User", b =>
@@ -253,6 +276,9 @@ namespace A_Manager.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int?>("Carid")
+                        .HasColumnType("int");
 
                     b.Property<string>("badge_number")
                         .HasColumnType("nvarchar(max)");
@@ -301,21 +327,23 @@ namespace A_Manager.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("profile_photo_url")
-                        .HasColumnType("nvarchar(200)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("telphone")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("Carid");
+
+                    b.ToTable("User", (string)null);
                 });
 
             modelBuilder.Entity("A_Manager.Models.Car_Insurance", b =>
                 {
                     b.HasOne("A_Manager.Models.Car", "car")
                         .WithMany()
-                        .HasForeignKey("id")
+                        .HasForeignKey("carID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -326,7 +354,7 @@ namespace A_Manager.Migrations
                 {
                     b.HasOne("A_Manager.Models.Car", "car")
                         .WithMany()
-                        .HasForeignKey("id")
+                        .HasForeignKey("carID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -337,19 +365,31 @@ namespace A_Manager.Migrations
                 {
                     b.HasOne("A_Manager.Models.Car", "car")
                         .WithMany()
-                        .HasForeignKey("id")
+                        .HasForeignKey("carID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("A_Manager.Models.User", "user")
                         .WithMany()
-                        .HasForeignKey("id")
+                        .HasForeignKey("userID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("car");
 
                     b.Navigation("user");
+                });
+
+            modelBuilder.Entity("A_Manager.Models.User", b =>
+                {
+                    b.HasOne("A_Manager.Models.Car", null)
+                        .WithMany("drivers")
+                        .HasForeignKey("Carid");
+                });
+
+            modelBuilder.Entity("A_Manager.Models.Car", b =>
+                {
+                    b.Navigation("drivers");
                 });
 #pragma warning restore 612, 618
         }

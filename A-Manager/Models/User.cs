@@ -16,7 +16,7 @@ namespace A_Manager.Models
         public string? password { get; set; }
 
         [Display(Name = "Full Name")]
-        public string full_name { get; set; }
+        public string? full_name { get; set; }
 
         [Display(Name = "Local Full Name")]
         public string? local_full_name { get; set; }
@@ -64,5 +64,7 @@ namespace A_Manager.Models
         public Boolean is_employee { get; set; }
 
         public Boolean is_superuser { get; set; }
+
+       
     }
 }

@@ -9,13 +9,13 @@ namespace A_Manager.Models
         public int id { get; set; }
 
         [Display(Name = "Serial Number")]
-        public string serial_number { get; set; }
+        public string? serial_number { get; set; }
 
         [Display(Name = "VIN")]
-        public string vehicle_identification_number { get; set; }
+        public string? vehicle_identification_number { get; set; }
 
         [Display(Name = "Plate Number")]
-        public string plate_number { get; set; }
+        public string? plate_number { get; set; }
 
         
         [Display(Name = "Door Number")]
@@ -25,9 +25,9 @@ namespace A_Manager.Models
 
         public string? color { get; set; }
 
-        public string brand { get; set; }
+        public string? brand { get; set; }
 
-        public string model { get; set; }
+        public string? model { get; set; }
 
 
         [Display(Name = "Year")]
@@ -88,5 +88,7 @@ namespace A_Manager.Models
        
         
         public string? owner_id { get; set; }
+
+        public ICollection<Car_Users>? carUsers { get; set; }
     }
 }

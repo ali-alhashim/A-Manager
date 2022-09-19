@@ -2,12 +2,18 @@ using A_Manager.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// register database connection string
 builder.Services.AddDbContext<DatabaseConnectionClass>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -30,4 +36,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+DbInitializer.CreateDbIfNotExists(app);
 app.Run();

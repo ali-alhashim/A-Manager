@@ -8,8 +8,8 @@ namespace A_Manager.Models
         [Key]
         public int id { get; set; }
 
-        [ForeignKey("id")]
-        public virtual Car car { get; set; }
+        public int carID { get; set; }
+        public Car car { get; set; }
 
         public DateTime created_date { get; set; }
 
